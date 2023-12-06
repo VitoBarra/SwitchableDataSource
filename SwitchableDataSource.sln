@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource", "SwitchableDataSource\SwitchableDataSource.csproj", "{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test", "SwitchableDataSource.Test\SwitchableDataSource.Test.csproj", "{688C194F-1DE5-4713-A639-485759AEA4E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688C194F-1DE5-4713-A639-485759AEA4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688C194F-1DE5-4713-A639-485759AEA4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688C194F-1DE5-4713-A639-485759AEA4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688C194F-1DE5-4713-A639-485759AEA4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
