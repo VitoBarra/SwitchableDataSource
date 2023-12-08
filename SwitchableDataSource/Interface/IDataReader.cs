@@ -3,6 +3,7 @@ namespace SwitchableDataSource.Interface;
 
 public interface IDataReader<T>
 {
-     IList<T> ReadDataList();
+     IList<T> ReadList();
+     T ReadObject();
 
 }

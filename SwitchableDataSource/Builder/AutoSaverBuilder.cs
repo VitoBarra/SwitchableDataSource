@@ -1,4 +1,4 @@
-using SwitchableDataSource.Implementation;
+using SwitchableDataSource.DataInteraction.Decorator.AutoSaver;
 using SwitchableDataSource.Interface;
 
 
@@ -6,7 +6,6 @@ public class AutoSaverBuilder<T>
 {
     private int Rate = 30;
     private int IdleTime = 30;
-    private string Name = "";
 
     public AutoSaverBuilder<T> SetRate(int rate)
     {
@@ -27,19 +26,10 @@ public class AutoSaverBuilder<T>
         return this;
     }
 
-    public AutoSaverBuilder<T> SetName(String optionalName)
+
+    public AutoSaver<T> CreateAutoSaver(IMemoryInteraction<T> mem)
     {
-        Name = optionalName;
-        return this;
+        return new AutoSaver<T>(Rate, IdleTime, mem);
     }
 
-    public AutoSaverList<T> CreateAutoSaver(IMemoryListStrategy<T> mem)
-    {
-        return new AutoSaverList<T>(Rate, IdleTime, Name, mem);
-    }
-
-    public AutoSaverObject<T> CreateAutoSaver(IMemoryObjectStrategy<T> mem)
-    {
-        return new AutoSaverObject<T>(Rate, IdleTime, Name, mem);
-    }
 }

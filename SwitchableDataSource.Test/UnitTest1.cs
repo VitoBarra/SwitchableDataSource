@@ -1,3 +1,5 @@
+using SwitchableDataSource.Implementation;
+
 namespace SwitchableDataSource.Test;
 
 public class Tests
@@ -8,8 +10,18 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void Builder()
     {
+
+    }
+
+    [Test]
+    public void SimpleDataInteraction()
+    {
+        //var DataInteraction =new SimpleDataInteraction<int>();
+
+
+      // DataInteraction.ReadObject();
         Assert.Pass();
     }
 }

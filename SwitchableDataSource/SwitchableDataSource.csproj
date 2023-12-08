@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="Builder\" />
-      <Folder Include="Implementation\" />
     </ItemGroup>
 
 </Project>
