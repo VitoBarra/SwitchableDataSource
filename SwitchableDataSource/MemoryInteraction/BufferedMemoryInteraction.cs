@@ -1,6 +1,6 @@
-using SwitchableDataSource.DataManager;
+using SwitchableDataSource.DataManagers;
 
-namespace SwitchableDataSource.DataInteraction;
+namespace SwitchableDataSource.MemoryInteraction;
 
 public class BufferedMemoryInteraction<T> : AbstractMemoryInteraction<T>
 {
@@ -8,8 +8,8 @@ public class BufferedMemoryInteraction<T> : AbstractMemoryInteraction<T>
     private IList<T> UnSavedBuffer;
     protected override bool WriteAllowed => !DirtBit || UnSavedBuffer.Count == 0;
 
-    public BufferedMemoryInteraction(AbstractDataManager<T> dataManager, bool lazyInitialization = true,Type listType = null) :
-        base(dataManager,listType)
+    public BufferedMemoryInteraction(MixingDataManager<T> dataManager, bool lazyInitialization = true, Type listType = null) :
+        base(dataManager, listType)
     {
         DataManager = dataManager;
         if (!lazyInitialization) Initialize();

@@ -1,6 +1,6 @@
 using SwitchableDataSource.Interface;
 
-namespace SwitchableDataSource.DataInteraction;
+namespace SwitchableDataSource.MemoryInteraction;
 
 public abstract class AbstractMemoryInteraction<T> : IMemoryInteraction<T>
 {
@@ -40,12 +40,12 @@ public abstract class AbstractMemoryInteraction<T> : IMemoryInteraction<T>
     protected virtual void InitializationMethod()
     {
         Data = (IList<T?>)Activator.CreateInstance(ListType);
-        var data = DataManager.ReadList();
+        var data = DataManager.ReadList() ;
 
         if (data == null) return;
 
         foreach (var d in data)
-            Data.Add(d);
+            Data?.Add(d); 
     }
 
     public virtual T? ReadObject()

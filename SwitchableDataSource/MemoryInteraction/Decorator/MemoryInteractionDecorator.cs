@@ -1,6 +1,6 @@
 ﻿using SwitchableDataSource.Interface;
 
-namespace SwitchableDataSource.DataInteraction.Decorator;
+namespace SwitchableDataSource.MemoryInteraction.Decorator;
 
 public class MemoryInteractionDecorator<T> : IMemoryInteraction<T>
 {

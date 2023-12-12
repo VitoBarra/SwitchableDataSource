@@ -1,25 +1,25 @@
-using SwitchableDataSource.DataInteraction.Decorator.AutoSaver;
+using SwitchableDataSource.MemoryInteraction.Decorator.AutoSaver;
 using SwitchableDataSource.Interface;
 
 
-public class AutoSaverBuilder<T>
+public class AutoSaverBuilder
 {
     private int Rate = 30;
     private int IdleTime = 30;
 
-    public AutoSaverBuilder<T> SetRate(int rate)
+    public AutoSaverBuilder SetRate(int rate)
     {
         Rate = rate;
         return this;
     }
 
-    public AutoSaverBuilder<T> SetIdleTime(int _ideleTime)
+    public AutoSaverBuilder SetIdleTime(int _ideleTime)
     {
         IdleTime = _ideleTime;
         return this;
     }
 
-    public AutoSaverBuilder<T> SetRate(int _times, int _idleTime)
+    public AutoSaverBuilder SetRate(int _times, int _idleTime)
     {
         Rate = _times;
         IdleTime = _idleTime;
@@ -27,7 +27,7 @@ public class AutoSaverBuilder<T>
     }
 
 
-    public AutoSaver<T> CreateAutoSaver(IMemoryInteraction<T> mem)
+    public IMemoryInteraction<T> CreateAutoSaver<T>(IMemoryInteraction<T> mem)
     {
         return new AutoSaver<T>(Rate, IdleTime, mem);
     }

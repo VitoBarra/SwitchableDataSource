@@ -1,20 +1,28 @@
 ﻿using SwitchableDataSource.Interface;
 
-namespace SwitchableDataSource.DataManager;
+namespace SwitchableDataSource.DataManagers;
 
-public abstract class AbstractDataManager<T> : IDataManager<T>
+public  class MixingDataManager<T> : IDataManager<T>
 {
     protected IDataReader<T> Reader;
     protected IDataSaver<T> Saver;
     protected readonly object ReaderLock = new();
     protected readonly object SaverLock = new();
 
-    protected AbstractDataManager(IDataSaver<T> saver, IDataReader<T> reader)
+    protected MixingDataManager()
+    {
+    }
+    protected MixingDataManager(IDataSaver<T> saver, IDataReader<T> reader)
     {
         Saver = saver;
         Reader = reader;
     }
 
+    protected MixingDataManager(IDataManager<T> dataManager)
+    {
+        Saver = dataManager;
+        Reader = dataManager;
+    }
 
     public void SetSaver(IDataSaver<T> _saver)
     {

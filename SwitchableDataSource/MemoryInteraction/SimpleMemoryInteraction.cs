@@ -1,6 +1,6 @@
 using SwitchableDataSource.Interface;
 
-namespace SwitchableDataSource.DataInteraction;
+namespace SwitchableDataSource.MemoryInteraction;
 
 public class SimpleMemoryInteraction<T> : AbstractMemoryInteraction<T>
 {
