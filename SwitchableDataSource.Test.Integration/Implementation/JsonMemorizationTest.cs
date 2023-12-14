@@ -1,26 +1,20 @@
-﻿using SwitchableDataSource.DataManagers;
-using SwitchableDataSource.MemoryInteraction.Decorator.AutoSaver;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using SwitchableDataSource.DataManagerCollection.DataManagers;
 
-namespace SwitchableDataSource.Test;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+
+namespace SwitchableDataSource.Test.Integration;
 
 [TestFixture]
 public class JsonMemorizationTest
 {
     private string testFilePath = "test.json";
-    private JsonDataManager<TestObject> _jsonDataManager;
 
-    [SetUp]
-    public void Setup()
+    private JsonDataManager<T> GetJsonDataManager<T>()
     {
-        _jsonDataManager = new JsonDataManager<TestObject>(testFilePath);
+        return new JsonDataManager<T>(testFilePath);
     }
 
-    [TearDown]
-    public void TearDown()
+    private void RemoveFileFromDisk()
     {
         if (File.Exists(testFilePath))
         {
@@ -29,52 +23,60 @@ public class JsonMemorizationTest
     }
 
     [Test]
-    public void Save_ReadList_Test()
+    public void Save_ReadList_ReturnSameAsSave()
     {
         // Arrange
+        var jsonDataManager = GetJsonDataManager<TestObject>();
         var expectedList = new List<TestObject> { new TestObject { Id = 1, Name = "Test1" }, new TestObject { Id = 2, Name = "Test2" } };
 
         // Act
-        _jsonDataManager.Save(expectedList);
-        var actualList = _jsonDataManager.ReadList();
+        jsonDataManager.Save(expectedList);
+        var actualList = jsonDataManager.ReadList();
 
         // Assert
         Assert.That(actualList.Count, Is.EqualTo(expectedList.Count));
         Assert.IsTrue(expectedList.SequenceEqual(actualList));
+        RemoveFileFromDisk();
     }
 
     [Test]
-    public void Save_ReadObject_Test()
+    public void Save_ReadObject_ReturnSameAsSave()
     {
         // Arrange
+        var jsonDataManager = GetJsonDataManager<TestObject>();
         var expectedObject = new TestObject { Id = 1, Name = "Test" };
 
         // Act
-        _jsonDataManager.Save(new List<TestObject> { expectedObject });
-        var actualObject = _jsonDataManager.ReadObject();
+        jsonDataManager.Save(new List<TestObject> { expectedObject });
+        var actualObject = jsonDataManager.ReadObject();
 
         // Assert
         Assert.That(actualObject, Is.EqualTo(expectedObject));
+        RemoveFileFromDisk();
     }
 
     [Test]
     public void Append_List_ThrowsNotSupportedException()
     {
         // Arrange
+        var jsonDataManager = GetJsonDataManager<TestObject>();
         IList<TestObject> dataList = new List<TestObject> { new TestObject { Id = 1, Name = "Test1" }, new TestObject { Id = 2, Name = "Test2" } };
 
         // Act & Assert
-        Assert.Throws<NotSupportedException>(() => _jsonDataManager.Append(dataList));
+        Assert.Throws<NotSupportedException>(() => jsonDataManager.Append(dataList));
+        RemoveFileFromDisk();
     }
 
     [Test]
     public void Append_SingleData_ThrowsNotSupportedException()
     {
         // Arrange
+        var jsonDataManager = GetJsonDataManager<TestObject>();
         var data = new TestObject { Id = 1, Name = "Test1" };
 
         // Act & Assert
-        Assert.Throws<NotSupportedException>(() => _jsonDataManager.Append(data));
+        Assert.Throws<NotSupportedException>(() => jsonDataManager.Append(data));
+        RemoveFileFromDisk();
     }
 
 

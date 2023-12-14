@@ -1,10 +1,7 @@
-﻿using SwitchableDataSource.DataManagers;
+﻿using Newtonsoft.Json;
 using SwitchableDataSource.Interface;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
 
-namespace SwitchableDataSource.DataManagers;
+namespace SwitchableDataSource.DataManagerCollection.DataManagers;
 
 public class JsonDataManager<T> : IDataManager<T>
 {

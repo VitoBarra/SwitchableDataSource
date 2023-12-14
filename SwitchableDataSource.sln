@@ -2,9 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource", "SwitchableDataSource\SwitchableDataSource.csproj", "{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test", "SwitchableDataSource.Test\SwitchableDataSource.Test.csproj", "{688C194F-1DE5-4713-A639-485759AEA4E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test.unit", "SwitchableDataSource.Test.unit\SwitchableDataSource.Test.unit.csproj", "{688C194F-1DE5-4713-A639-485759AEA4E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchabledataSource.DataManagerCollection", "SwitchabledataSource.DataManagerCollection\SwitchabledataSource.DataManagerCollection.csproj", "{E4ED8A7F-B030-4539-A118-AA72FBED5323}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchabledataSource.DataManagersCollection", "SwitchabledataSource.DataManagersCollection\SwitchabledataSource.DataManagersCollection.csproj", "{E4ED8A7F-B030-4539-A118-AA72FBED5323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test", "SwitchableDataSource.Test\SwitchableDataSource.Test.csproj", "{8228F290-0104-4902-84F4-588F90805080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test.Integration", "SwitchableDataSource.Test.Integration\SwitchableDataSource.Test.Integration.csproj", "{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,13 @@ Global
 		{E4ED8A7F-B030-4539-A118-AA72FBED5323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4ED8A7F-B030-4539-A118-AA72FBED5323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4ED8A7F-B030-4539-A118-AA72FBED5323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8228F290-0104-4902-84F4-588F90805080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8228F290-0104-4902-84F4-588F90805080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8228F290-0104-4902-84F4-588F90805080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8228F290-0104-4902-84F4-588F90805080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

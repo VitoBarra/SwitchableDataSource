@@ -4,6 +4,13 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Version>0.1.0-alpha</Version>
+        <Authors>VitoBarra</Authors>
+        <Description>A framework to deal with one or multiple data source with utility to migrate to a data type to another. </Description>
+        <RepositoryUrl>https://github.com/VitoBarra/SwitchableDataSource</RepositoryUrl>
+        <RepositoryType>public</RepositoryType>
+        <PackageTags>Data</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
