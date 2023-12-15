@@ -1,11 +1,9 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using SwitchableDataSource.DataManagerCollection.DataManagers;
+﻿using SwitchableDataSource.DataManagerCollection.DataManagers;
 
+namespace SwitchableDataSource.Test.Integration.Implementation;
 
-namespace SwitchableDataSource.Test.Integration;
-
-[TestFixture]
-public class JsonMemorizationTest
+[TestFixture(Category = "Integration")]
+public class JsonInteractionTest
 {
     private string testFilePath = "test.json";
 
@@ -55,29 +53,7 @@ public class JsonMemorizationTest
         RemoveFileFromDisk();
     }
 
-    [Test]
-    public void Append_List_ThrowsNotSupportedException()
-    {
-        // Arrange
-        var jsonDataManager = GetJsonDataManager<TestObject>();
-        IList<TestObject> dataList = new List<TestObject> { new TestObject { Id = 1, Name = "Test1" }, new TestObject { Id = 2, Name = "Test2" } };
 
-        // Act & Assert
-        Assert.Throws<NotSupportedException>(() => jsonDataManager.Append(dataList));
-        RemoveFileFromDisk();
-    }
-
-    [Test]
-    public void Append_SingleData_ThrowsNotSupportedException()
-    {
-        // Arrange
-        var jsonDataManager = GetJsonDataManager<TestObject>();
-        var data = new TestObject { Id = 1, Name = "Test1" };
-
-        // Act & Assert
-        Assert.Throws<NotSupportedException>(() => jsonDataManager.Append(data));
-        RemoveFileFromDisk();
-    }
 
 
 

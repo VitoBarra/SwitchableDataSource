@@ -1,9 +1,10 @@
-﻿using SwitchableDataSource.MemoryInteraction;
+﻿using SwitchableDataSource.DataInteraction;
 using SwitchableDataSource.MemoryInteraction.Decorator.AutoSaver;
 using SwitchableDataSource.Test.MemorizationStrategy;
 
-namespace SwitchableDataSource.Test;
+namespace SwitchableDataSource.Test.Decorator;
 
+[TestFixture(Category = "Unit")]
 public class AutoSaveInteraction
 {
     private int IdleTime = 2000;
@@ -11,9 +12,9 @@ public class AutoSaveInteraction
 
     public AutoSaver<TestObject> GetAutoSaver()
     {
-        var DataManager = new FakeDataManager<TestObject>();
-        var memorization = new SimpleMemoryInteraction<TestObject>(DataManager);
-        return new AutoSaver<TestObject>(IdleTime, RateMil, memorization);
+        var dataManager = new FakeDataManager<TestObject>();
+        var memorization = new CachedDataInteraction<TestObject>(dataManager);
+        return new AutoSaver<TestObject?>(memorization, IdleTime, RateMil);
     }
 
     public void StopAutoSaver<T>(AutoSaver<T> autoSaver)
@@ -27,7 +28,7 @@ public class AutoSaveInteraction
     {
         // Arrange
         var autoSave = GetAutoSaver();
-        var expectedList = new List<TestObject>();
+        var expectedList = new List<TestObject?>();
 
         for (int i = 0; i < 10; i++)
         {
@@ -38,7 +39,7 @@ public class AutoSaveInteraction
         foreach (var t in expectedList)
             autoSave.AddOrModify(t);
 
-        autoSave.Save();
+        autoSave.SaveToSource();
 
         for (int i = 11; i < 20; i++)
         {
@@ -49,7 +50,7 @@ public class AutoSaveInteraction
 
         autoSave.Start();
         System.Threading.Thread.Sleep(RateMil + 2000);
-        var actualList = autoSave.ReadList();
+        var actualList = autoSave.ReadFromSource();
 
         // Assert
         Assert.That(actualList.Count, Is.EqualTo(expectedList.Count));

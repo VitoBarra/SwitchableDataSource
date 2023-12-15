@@ -2,89 +2,48 @@
 
 namespace SwitchableDataSource.DataManagers;
 
-public  class MixingDataManager<T> : IDataManager<T>
+public class MixingDataManager<T> : IDataManager<T>
 {
-    protected IDataReader<T> Reader;
-    protected IDataSaver<T> Saver;
-    protected readonly object ReaderLock = new();
-    protected readonly object SaverLock = new();
+    private IDataReader<T> Reader;
+    private IDataSaver<T> Saver;
+    IDataManager<T>? DataManager;
 
-    protected MixingDataManager()
-    {
-    }
-    protected MixingDataManager(IDataSaver<T> saver, IDataReader<T> reader)
+    public MixingDataManager(IDataSaver<T> saver, IDataReader<T> reader)
     {
         Saver = saver;
         Reader = reader;
     }
 
-    protected MixingDataManager(IDataManager<T> dataManager)
+    public MixingDataManager(IDataSaver<T> saver, IDataReader<T> reader, IDataManager<T>? dataManager) : this(saver,
+        reader)
     {
-        Saver = dataManager;
-        Reader = dataManager;
+        DataManager = dataManager;
     }
 
-    public void SetSaver(IDataSaver<T> _saver)
+    public MixingDataManager(IDataManager<T> dataManager) : this(dataManager, dataManager)
     {
-        lock (SaverLock)
-        {
-            Saver = _saver;
-        }
-    }
-
-    public void SetReader(IDataReader<T> _reader)
-    {
-        lock (ReaderLock)
-        {
-            Reader = _reader;
-        }
+        DataManager = dataManager;
     }
 
 
-    public virtual void Save(IList<T> e)
+    public IList<T> ReadList()
     {
-        lock (SaverLock)
-        {
-            Saver?.Save(e);
-        }
+        return Reader.ReadList();
     }
 
-    public virtual void Append(T e)
+    public T ReadObject()
     {
-        if (e == null) return;
-        lock (SaverLock)
-        {
-            Saver.Append(e);
-        }
+        return Reader.ReadObject();
     }
 
-    public virtual void Append(IList<T> e)
+    public void Save(IList<T> dataList)
     {
-        lock (SaverLock)
-        {
-            Saver.Append(e);
-        }
+        Saver.Save(dataList);
     }
 
-    public virtual IList<T> ReadList()
+
+    public void Release()
     {
-        IList<T> list = null;
-        lock (ReaderLock)
-        {
-            list = Reader.ReadList();
-        }
-
-        return list;
-    }
-
-    public virtual T ReadObject()
-    {
-        T obj = default;
-        lock (ReaderLock)
-        {
-            obj = Reader.ReadObject();
-        }
-
-        return obj;
+        DataManager?.Release();
     }
 }

@@ -2,4 +2,5 @@
 
 public interface IDataManager<T> : IDataReader<T>, IDataSaver<T>
 {
+    void Release();
 }

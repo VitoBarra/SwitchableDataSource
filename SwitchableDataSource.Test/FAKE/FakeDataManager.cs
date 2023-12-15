@@ -20,13 +20,14 @@ public class FakeDataManager<T> : IDataManager<T>
         Data = DataList;
     }
 
-    public void Append(IList<T> DataList)
-    {
-        Data = DataList;
-    }
 
     public void Append(T _data)
     {
         Data.Add(_data);
+    }
+
+    public void Release()
+    {
+        return;
     }
 }

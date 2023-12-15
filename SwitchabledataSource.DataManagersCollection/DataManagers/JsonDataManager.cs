@@ -12,15 +12,6 @@ public class JsonDataManager<T> : IDataManager<T>
         _filePath = filePath;
     }
 
-    public void Append(IList<T> DataList)
-    {
-        throw new NotSupportedException();
-    }
-
-    public void Append(T Data)
-    {
-        throw new NotSupportedException();
-    }
 
     public void Save(IList<T> DataList)
     {
@@ -45,6 +36,11 @@ public class JsonDataManager<T> : IDataManager<T>
     {
         string json = File.ReadAllText(_filePath);
         return JsonConvert.DeserializeObject<IList<T>>(json)[0] ?? default!;
+    }
+
+    public void Release()
+    {
+        throw new NotSupportedException();
     }
 }
 
