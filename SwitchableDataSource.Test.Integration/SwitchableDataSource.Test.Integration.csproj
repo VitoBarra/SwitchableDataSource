@@ -24,4 +24,8 @@
       <ProjectReference Include="..\SwitchableDataSource.Test\SwitchableDataSource.Test.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Decorator\" />
+    </ItemGroup>
+
 </Project>

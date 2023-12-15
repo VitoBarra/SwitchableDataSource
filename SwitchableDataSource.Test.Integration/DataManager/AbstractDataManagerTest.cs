@@ -1,30 +1,19 @@
-﻿using SwitchableDataSource.DataManagerCollection.DataManagers;
+﻿using SwitchableDataSource.Interface;
 
 namespace SwitchableDataSource.Test.Integration.Implementation;
 
-[TestFixture(Category = "Integration")]
-public class JsonInteractionTest
+public abstract class AbstractDataManagerTest
 {
-    private string testFilePath = "test.json";
+    protected abstract IDataManager<T> GetDataManager<T>();
 
-    private JsonDataManager<T> GetJsonDataManager<T>()
-    {
-        return new JsonDataManager<T>(testFilePath);
-    }
+    protected abstract void ClearFunction();
 
-    private void RemoveFileFromDisk()
-    {
-        if (File.Exists(testFilePath))
-        {
-            File.Delete(testFilePath);
-        }
-    }
 
     [Test]
     public void Save_ReadList_ReturnSameAsSave()
     {
         // Arrange
-        var jsonDataManager = GetJsonDataManager<TestObject>();
+        var jsonDataManager = GetDataManager<TestObject>();
         var expectedList = new List<TestObject> { new TestObject { Id = 1, Name = "Test1" }, new TestObject { Id = 2, Name = "Test2" } };
 
         // Act
@@ -34,14 +23,14 @@ public class JsonInteractionTest
         // Assert
         Assert.That(actualList.Count, Is.EqualTo(expectedList.Count));
         Assert.IsTrue(expectedList.SequenceEqual(actualList));
-        RemoveFileFromDisk();
+        ClearFunction();
     }
 
     [Test]
     public void Save_ReadObject_ReturnSameAsSave()
     {
         // Arrange
-        var jsonDataManager = GetJsonDataManager<TestObject>();
+        var jsonDataManager = GetDataManager<TestObject>();
         var expectedObject = new TestObject { Id = 1, Name = "Test" };
 
         // Act
@@ -50,11 +39,6 @@ public class JsonInteractionTest
 
         // Assert
         Assert.That(actualObject, Is.EqualTo(expectedObject));
-        RemoveFileFromDisk();
+        ClearFunction();
     }
-
-
-
-
-
 }
