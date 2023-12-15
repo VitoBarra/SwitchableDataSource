@@ -1,31 +1,30 @@
 # Disclaimer
-This project is NOT ready for production use; it is in an embryonal stage and requires further work and redesign, so use it at your own risk
+This project is currently in its early stages of development and is not recommended for production use. It requires further refinement and redesign, so proceed at your own risk. Documentation will be provided once the project reaches a satisfactory state.
 
-Also, there is no documentation. It will arrive when I will be happy with the state of the project
+# Motif of This Framework
 
-# SwitchableDataSource
+The SwitchableDataSource framework aims to simplify the management of data interactions, including reading and writing operations to a data source. It provides a platform where you need to write minimal code to interact with the data source. Additionally, it offers an easy way to compose multiple data sources and manage migrations between them.
 
-This is a little framework that I implemented during a University Project.
+This Framework also give you an abstraction on the data, so you can use the object as a "source" of data ignoring how is read and writed
 
-The main goal is to AutoMenage Writing and Reading from Data Sources and transfers data from one kind of source to another one in an easy and clean manner
+The framework aspires to be highly flexible and extensible, enabling users to leverage its structure while tailoring it to suit their unique requirements.
 
-An example:
-You have your data on JSON files and if you want to transfer all this data to another format like CSV, MongoDB, or SQLDB, NO Problem.
-You need to create your implementation of the reader for Json and your implementation of the writer for one of your other preferred formats, select a memorization strategy with the option that best suits you and you are good to go.
+## When to Use This Framework:
+Consider a scenario where your data is stored in JSON files, and you want to transfer this data to another format such as CSV, MongoDB, or SQLDB.
+Using this framework you can achieve this by creating by implementing a custom reader for JSON and a writer for the desired format, choose a memoization strategy among those already implemented (or your ouwn) in a way that fits your requirements, and you are ready to proceed.
 
-Obviously, it also works for the same kind of format as json->json. In this way, you can have an AutoMenaged Read/Write from your data format. 
-
-There is some Default implementation for common uses, like
-- AutoSaving
-that's it.
-
-performance:
-- Every strategy is implemented in a multithreaded environment to ensure good performance. Including AutoSave.
-
-Possibilities:
-- You can switch the source Dinamycaly during runtime 
-- MemorizationStrategy is extendible if you have some particular need.
+The framework also supports operations within the same format.
 
 
+# Commmon use case
+The framework comes with implementations for common features, such as:
 
-Code Example:
+- AutoSaving: Schedule automatic saves at a fixed rate.
+  - This feature is implemented with threads to ensure performance. Exercise caution and use synchronized data structures when employing this feature.
+
+Additionally, it includes implementations for common data formats like:
+Json
+MongoDB
+...with more formats in development.
+
+
