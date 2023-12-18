@@ -1,11 +1,11 @@
-﻿namespace SwitchableDataSource.Test;
+namespace SwitchableDataSource.Test;
 
 public class TestObject
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    public int Id { get; set; } = -1;
+    public string Name { get; set; } = "";
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj is TestObject to)
         {

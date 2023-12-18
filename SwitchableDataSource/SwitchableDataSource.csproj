@@ -1,16 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.1.0-alpha</Version>
+        <Version>0.1.1-alpha</Version>
         <Authors>VitoBarra</Authors>
         <Description>A framework to deal with one or multiple data source with utility to migrate to a data type to another. </Description>
         <RepositoryUrl>https://github.com/VitoBarra/SwitchableDataSource</RepositoryUrl>
         <RepositoryType>public</RepositoryType>
         <PackageTags>Data</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<LangVersion>12</LangVersion>
     </PropertyGroup>
 
+	<ItemGroup>
+	    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+		<None Include="..\LICENSE" Pack="true" PackagePath=""/>
+	</ItemGroup>
 </Project>

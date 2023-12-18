@@ -14,7 +14,7 @@ public class AutoSaveInteraction
     {
         var dataManager = new FakeDataManager<TestObject>();
         var memorization = new CachedDataInteraction<TestObject>(dataManager);
-        return new AutoSaver<TestObject?>(memorization, IdleTime, RateMil);
+        return new AutoSaver<TestObject>(memorization, IdleTime, RateMil);
     }
 
     public void StopAutoSaver<T>(AutoSaver<T> autoSaver)
@@ -28,7 +28,7 @@ public class AutoSaveInteraction
     {
         // Arrange
         var autoSave = GetAutoSaver();
-        var expectedList = new List<TestObject?>();
+        var expectedList = new List<TestObject>();
 
         for (int i = 0; i < 10; i++)
         {

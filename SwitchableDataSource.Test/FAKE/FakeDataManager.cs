@@ -4,7 +4,8 @@ namespace SwitchableDataSource.Test.MemorizationStrategy;
 
 public class FakeDataManager<T> : IDataManager<T>
 {
-    private IList<T> Data;
+    private IList<T> Data = new List<T>();
+
     public IList<T> ReadList()
     {
         return Data;
@@ -15,15 +16,15 @@ public class FakeDataManager<T> : IDataManager<T>
         return Data[0];
     }
 
-    public void Save(IList<T> DataList)
+    public void Save(IList<T> dataList)
     {
-        Data = DataList;
+        Data = dataList;
     }
 
 
-    public void Append(T _data)
+    public void Append(T data)
     {
-        Data.Add(_data);
+        Data.Add(data);
     }
 
     public void Release()

@@ -41,7 +41,7 @@ public abstract class AbstractDataInteraction<T> : IDataInteraction<T>
 
     public virtual void SaveToSource()
     {
-        if(!WriteEnable) return;
+        if (!WriteEnable) return;
         DataManager.Save(Data);
         DirtyBit = false;
     }
@@ -67,7 +67,7 @@ public abstract class AbstractDataInteraction<T> : IDataInteraction<T>
 
     public virtual void AddOrModify(T element)
     {
-        var foundedElement = GetObjectWhere(x => x.Equals(element));
+        var foundedElement = GetObjectWhere(x => x != null && x.Equals(element));
         if (foundedElement != null)
             Data.ToList().Remove(foundedElement);
 
@@ -83,8 +83,10 @@ public abstract class AbstractDataInteraction<T> : IDataInteraction<T>
 
     public virtual bool DeleteIfExists(Func<T, bool> FilterFunction)
     {
-        return Data.Remove(GetObjectWhere(x=>x.Equals(FilterFunction)));
+        var e = GetObjectWhere(x => x != null && x.Equals(FilterFunction));
+        return e != null && Data.Remove(e);
     }
+
     public virtual void DeleteAll(Predicate<T> FilterFunction)
     {
         Data.ToList().RemoveAll(FilterFunction);

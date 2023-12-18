@@ -1,14 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource", "SwitchableDataSource\SwitchableDataSource.csproj", "{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchableDataSource", "SwitchableDataSource\SwitchableDataSource.csproj", "{9212D4DD-CCB6-4874-8957-5A476C3ACDC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test.unit", "SwitchableDataSource.Test.unit\SwitchableDataSource.Test.unit.csproj", "{688C194F-1DE5-4713-A639-485759AEA4E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchableDataSource.Test.unit", "SwitchableDataSource.Test.unit\SwitchableDataSource.Test.unit.csproj", "{688C194F-1DE5-4713-A639-485759AEA4E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchabledataSource.DataManagersCollection", "SwitchabledataSource.DataManagersCollection\SwitchabledataSource.DataManagersCollection.csproj", "{E4ED8A7F-B030-4539-A118-AA72FBED5323}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchabledataSource.DataManagersCollection", "SwitchabledataSource.DataManagersCollection\SwitchabledataSource.DataManagersCollection.csproj", "{E4ED8A7F-B030-4539-A118-AA72FBED5323}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test", "SwitchableDataSource.Test\SwitchableDataSource.Test.csproj", "{8228F290-0104-4902-84F4-588F90805080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchableDataSource.Test", "SwitchableDataSource.Test\SwitchableDataSource.Test.csproj", "{8228F290-0104-4902-84F4-588F90805080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchableDataSource.Test.Integration", "SwitchableDataSource.Test.Integration\SwitchableDataSource.Test.Integration.csproj", "{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchableDataSource.Test.Integration", "SwitchableDataSource.Test.Integration\SwitchableDataSource.Test.Integration.csproj", "{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49D900EE-B67C-4423-AEDA-619802D774D8}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +45,8 @@ Global
 		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC949DA-A3E5-4659-99CF-79CB4BE93DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
