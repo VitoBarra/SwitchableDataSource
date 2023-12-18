@@ -3,7 +3,7 @@ using SwitchableDataSource.MemoryInteraction.Decorator;
 
 namespace SwitchableDataSource.DataInteraction.Decorator.Memory;
 
-public class BufferedInteraction<T> : DataInteractionDecorator<T>
+public class BufferedInteraction<T> : AbstractDataDecorator<T>
 {
     private readonly IList<T> UnSavedBuffer;
     private readonly int BufferSize;
