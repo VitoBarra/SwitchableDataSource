@@ -35,7 +35,11 @@ public class JsonDataManager<T> : IDataManager<T>
     public T ReadObject()
     {
         string json = File.ReadAllText(_filePath);
-        return JsonConvert.DeserializeObject<IList<T>>(json)[0] ?? default!;
+        var deserializeObject = JsonConvert.DeserializeObject<IList<T>>(json);
+        if (deserializeObject == null || deserializeObject.Count == 0)
+            return default!;
+
+        return deserializeObject[0] ?? default!;
     }
 
     public void Release()

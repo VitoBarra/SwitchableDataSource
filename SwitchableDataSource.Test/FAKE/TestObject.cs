@@ -5,17 +5,17 @@ public class TestObject
     public int Id { get; set; } = -1;
     public string Name { get; set; } = "";
 
-    public override bool Equals(object? obj)
+
+    protected bool Equals(TestObject other)
     {
-        if (obj is TestObject to)
-        {
-            return this.Id == to.Id && this.Name == to.Name;
-        }
-        return false;
+        return Id == other.Id && Name == other.Name;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Id, Name);
+        unchecked
+        {
+            return (Id * 397) ^ Name.GetHashCode();
+        }
     }
 }
